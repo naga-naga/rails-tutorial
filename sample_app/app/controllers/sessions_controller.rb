@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       # ログイン後にユーザ情報のページにリダイレクト
     else
       # エラーメッセージの作成
+      flash[:danger] = "Invalid email/password combination"
       render "new", status: :unprocessable_entity
     end
   end
