@@ -1,19 +1,13 @@
-document.addEventListener("turbo:load", () => {
-  let hamburger = document.querySelector("#hamburger");
-  if (hamburger) {
-    hamburger.addEventListener("click", event => {
-      event.preventDefault();
-      let menu = document.querySelector("#navbar-menu");
-      menu.classList.toggle("collapse");
-    });
-  }
+function addToggleListener(selected_id, menu_id, toggle_class) {
+  let selected_element = document.querySelector(`#${selected_id}`);
+  selected_element.addEventListener("click", event => {
+    event.preventDefault();
+    let menu = document.querySelector(`#${menu_id}`);
+    menu.classList.toggle(toggle_class);
+  })
+}
 
-  let account = document.querySelector("#account");
-  if (account) {
-    account.addEventListener("click", event => {
-      event.preventDefault();
-      let menu = document.querySelector("#dropdown-menu");
-      menu.classList.toggle("active");
-    });
-  }
+document.addEventListener("turbo:load", () => {
+  addToggleListener("hamburger", "navbar-menu",   "collapse");
+  addToggleListener("account",   "dropdown-menu", "active");
 });
