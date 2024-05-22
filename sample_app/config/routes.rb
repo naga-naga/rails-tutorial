@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
+  get "/microposts", to: "static_pages#home" # マイクロポスト投稿後に更新すると /microposts に行く場合があるらしい
 end
