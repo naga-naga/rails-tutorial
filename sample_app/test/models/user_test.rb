@@ -115,6 +115,7 @@ class UserTest < ActiveSupport::TestCase
     # フォロワーがいるユーザ自身の投稿を確認
     michael.microposts.each do |post_self|
       assert michael.feed.include?(post_self)
+      assert_equal michael.feed.distinct, michael.feed
     end
 
     # フォローしていないユーザの投稿を確認
